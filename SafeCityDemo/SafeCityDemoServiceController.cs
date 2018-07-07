@@ -67,7 +67,7 @@ namespace SafeCityDemo
         {
             using (con = new ApplicationDbContext())
             {
-                var find = con.Incidents.Where(x => x.Number == incident.Number);
+                var find = con.Incidents.FirstOrDefault(x => x.Number == incident.Number);
                 if (find != null)
                     throw new InvalidOperationException("Duplicate incident");
 
