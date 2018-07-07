@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SafeCityDemoServiceController" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpsBinding_ISafeCityDemoServiceContract_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8997/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8997/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8997/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SafeCityDemo.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISafeCityDemoServiceContract_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_GetAllIncidents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllIncidents" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_GetAllIncidents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllIncidentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_GetIncidentByNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIncidentByNumber" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_GetIncidentByNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIncidentByNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_GetIncidentByCallerNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIncidentByCallerNumber" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_GetIncidentByCallerNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIncidentByCallerNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_GetCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategories" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_GetCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_GetLocations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocations" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_GetLocations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_AddIncident_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddIncident" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_AddIncident_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddIncidentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_UpdateIncident_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateIncident" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_UpdateIncident_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateIncidentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_AddCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCategory" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_AddCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_AddLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddLocation" />
+  </wsdl:message>
+  <wsdl:message name="ISafeCityDemoServiceContract_AddLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddLocationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISafeCityDemoServiceContract">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/GetData" message="tns:ISafeCityDemoServiceContract_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/GetDataResponse" message="tns:ISafeCityDemoServiceContract_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllIncidents">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/GetAllIncidents" message="tns:ISafeCityDemoServiceContract_GetAllIncidents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/GetAllIncidentsResponse" message="tns:ISafeCityDemoServiceContract_GetAllIncidents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIncidentByNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/GetIncidentByNumber" message="tns:ISafeCityDemoServiceContract_GetIncidentByNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/GetIncidentByNumberResponse" message="tns:ISafeCityDemoServiceContract_GetIncidentByNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIncidentByCallerNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/GetIncidentByCallerNumber" message="tns:ISafeCityDemoServiceContract_GetIncidentByCallerNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/GetIncidentByCallerNumberResponse" message="tns:ISafeCityDemoServiceContract_GetIncidentByCallerNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/GetCategories" message="tns:ISafeCityDemoServiceContract_GetCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/GetCategoriesResponse" message="tns:ISafeCityDemoServiceContract_GetCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocations">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/GetLocations" message="tns:ISafeCityDemoServiceContract_GetLocations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/GetLocationsResponse" message="tns:ISafeCityDemoServiceContract_GetLocations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddIncident">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/AddIncident" message="tns:ISafeCityDemoServiceContract_AddIncident_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/AddIncidentResponse" message="tns:ISafeCityDemoServiceContract_AddIncident_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIncident">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/UpdateIncident" message="tns:ISafeCityDemoServiceContract_UpdateIncident_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/UpdateIncidentResponse" message="tns:ISafeCityDemoServiceContract_UpdateIncident_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/AddCategory" message="tns:ISafeCityDemoServiceContract_AddCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/AddCategoryResponse" message="tns:ISafeCityDemoServiceContract_AddCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/AddLocation" message="tns:ISafeCityDemoServiceContract_AddLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISafeCityDemoServiceContract/AddLocationResponse" message="tns:ISafeCityDemoServiceContract_AddLocation_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISafeCityDemoServiceContract" type="tns:ISafeCityDemoServiceContract">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllIncidents">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/GetAllIncidents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIncidentByNumber">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/GetIncidentByNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIncidentByCallerNumber">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/GetIncidentByCallerNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/GetCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocations">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/GetLocations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddIncident">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/AddIncident" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIncident">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/UpdateIncident" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCategory">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/AddCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLocation">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/AddLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpsBinding_ISafeCityDemoServiceContract" type="tns:ISafeCityDemoServiceContract">
+    <wsp:PolicyReference URI="#BasicHttpsBinding_ISafeCityDemoServiceContract_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllIncidents">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/GetAllIncidents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIncidentByNumber">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/GetIncidentByNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIncidentByCallerNumber">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/GetIncidentByCallerNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/GetCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocations">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/GetLocations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddIncident">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/AddIncident" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIncident">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/UpdateIncident" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCategory">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/AddCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLocation">
+      <soap:operation soapAction="http://tempuri.org/ISafeCityDemoServiceContract/AddLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SafeCityDemoServiceController">
+    <wsdl:port name="BasicHttpBinding_ISafeCityDemoServiceContract" binding="tns:BasicHttpBinding_ISafeCityDemoServiceContract">
+      <soap:address location="http://localhost:8997/SafeCityDemoService" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpsBinding_ISafeCityDemoServiceContract" binding="tns:BasicHttpsBinding_ISafeCityDemoServiceContract">
+      <soap:address location="https://localhost:897/SafeCityDemoServiceHttps" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
