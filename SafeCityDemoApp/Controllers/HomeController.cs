@@ -32,10 +32,12 @@ namespace SafeCityDemoApp.Controllers
             return View(incident);
         }
 
+
         [HttpGet]
         public ActionResult CreateIncident()
         {
-
+            Locations();
+            Categories();
             return View();
         }
 
@@ -43,9 +45,77 @@ namespace SafeCityDemoApp.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult CreateIncident(Incident incident)
         {
-            var res = dataConn.AddIncident(incident);
+            try
+            {
+                var res = dataConn.AddIncident(incident);
+                Locations();
+                Categories();
+                return View(incident);
+            }
+            catch (Exception ex )
+            {
+                throw ex;
+            }          
+           
+        }
 
+
+        [HttpGet]
+        public ActionResult EditIncident(string Number)
+        {
+            Locations();
+            Categories();
+
+            var incident = dataConn.GetIncidentByNumber(Number);
             return View(incident);
         }
+
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult EditIncident(Incident incident)
+        {
+            try
+            {
+                var res = dataConn.UpdateIncident(incident.Number,incident);
+                Locations();
+                Categories();
+                return View(incident);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+
+
+        #region Viewbag data
+
+        private void Locations()
+        {
+            var data = dataConn.GetLocations()?.ToList();
+
+            var select = new SelectList(new List<string>() {"--Select--"});
+            if (data != null && data.Count > 0)
+                select = new SelectList(data, "Id", "Name");
+
+            ViewBag.Locations = select;
+        }
+
+        private void Categories()
+        {
+
+            var data = dataConn.GetCategories()?.ToList();
+
+            var select = new SelectList(new List<string>() { "--Select--" });
+            if (data != null && data.Count > 0)
+                select = new SelectList(data, "Id", "Name");
+
+            ViewBag.Categories = select;
+        }
+
+
+        #endregion
     }
 }

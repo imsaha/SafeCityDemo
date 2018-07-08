@@ -15,6 +15,8 @@
             <th>CallerNumber</th>
             <th>CallerName</th>
             <th>Date</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
 
@@ -28,16 +30,14 @@
                 <td>@item.CallerNumber</td>
                 <td>@item.CallerName</td>
                 <td>@item.Date</td>
+                <td><a href="@Url.Action("GetIncidentByIncidentNumber",new {Number=item.Number })">View</a></td>
+                <td><a href="@Url.Action("EditIncident",new {Number=item.Number })">Edit</a></td>
             </tr>
         }
     </tbody>
 </table>
 
-
-
-
-
-
+<a href="@Url.Action("CreateIncident")">Create New</a>
 
 
 <h1>@ViewBag.D</h1>

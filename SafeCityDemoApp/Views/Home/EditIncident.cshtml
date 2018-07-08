@@ -1,12 +1,12 @@
 ﻿@model Incident
 @{
-    ViewBag.Title = "CreateIncident";
+    ViewBag.Title = "Edit Incident";
 }
 
-<h2>CreateIncident</h2>
+<h2>@ViewBag.Title</h2>
 
 
-@using (Html.BeginForm("CreateIncident", "", FormMethod.Post))
+@using (Html.BeginForm("EditIncident", "", FormMethod.Post))
 {
 
     var loc = (SelectList)ViewBag.Locations;

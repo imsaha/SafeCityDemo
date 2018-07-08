@@ -14,7 +14,7 @@ namespace SafeCityDemo.Host
             using (ServiceHost host = new ServiceHost((typeof(SafeCityDemo.SafeCityDemoServiceController))))
             {
                 host.Open();
-                Console.WriteLine($"Host Started{DateTime.Now.ToString()}");
+                Console.WriteLine($"Host Started {DateTime.Now.ToString()}");
                 Console.ReadLine();
             }
         }
